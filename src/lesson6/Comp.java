@@ -23,7 +23,7 @@ public class Comp {
         System.out.println("For turn on, enter number 0 or 1:");
         int random1 = sc.nextInt();
         sc.close();
-        Block.turnOn(random1);
+        block.turnOn(random1);
     }
 }
 

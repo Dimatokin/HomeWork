@@ -1,60 +1,58 @@
 package lesson6;
 
 public class Block {
-    private String CPU, RAM, HDD;
-    static int CycleOfWork = 4;
-    static int countBurned = 0;
+    private String cpu, ram, hdd;
+     int cycleOfWork = 4;
+    int countBurned = 0;
 
-    public Block(String CPU, String RAM, String HDD) {
-        this.CPU = CPU;
-        this.RAM = RAM;
-        this.HDD = HDD;
+    public Block(String cpu, String ram, String hdd) {
+        this.cpu = cpu;
+        this.ram = ram;
+        this.hdd = hdd;
     }
 
-    public static int turnOn(int random1) {
+    public void turnOn(int random1) {
         int error = (int) (Math.random() * 2);
         int turnon = (int) (Math.random() * 2);
-        while (countBurned == 0 && CycleOfWork > 0) {
+        while (countBurned == 0 && cycleOfWork > 0) {
             if (error != random1) {
                 System.out.println("Error computer burned.");
                 countBurned++;
-                CycleOfWork--;
-            } else if (CycleOfWork > 0 && countBurned == 0 && random1 == turnon) {
+                cycleOfWork--;
+            } else if (cycleOfWork > 0 && countBurned == 0 && random1 == turnon) {
                 System.out.println(" Computer on.");
-                CycleOfWork--;
+                cycleOfWork--;
                 turnoff(random1);
-            } else if (countBurned > 1 | CycleOfWork == 0 | random1 != turnon) {
+            } else if (countBurned > 1 | cycleOfWork == 0 | random1 != turnon) {
                 System.out.println("Computer burned.");
                 countBurned++;
-                CycleOfWork--;
+                cycleOfWork--;
             }
         }
-        return random1;
     }
 
-    public static int turnoff(int random1) {
+    public void turnoff(int random1) {
         int error = (int) (Math.random() * 2);
         int turnoff = (int) (Math.random() * 2);
-        while (countBurned == 0 && CycleOfWork > 0) {
+        while (countBurned == 0 && cycleOfWork > 0) {
             if (error != random1) {
                 System.out.println("Error, computer burned.");
                 countBurned++;
-                CycleOfWork--;
+                cycleOfWork--;
             } else if (random1 == turnoff) {
                 System.out.println(" Computer off.");
-                CycleOfWork--;
+                cycleOfWork--;
                 turnOn(random1);
-            } else if (CycleOfWork <= 0 || countBurned > 1 || random1 != turnoff) {
+            } else if (cycleOfWork <= 0 || countBurned > 1 || random1 != turnoff) {
                 System.out.println("Computer burned.");
                 countBurned++;
-                CycleOfWork--;
+                cycleOfWork--;
             }
         }
-        return random1;
     }
 
     @Override
     public String toString() {
-        return "System block: " + " CPU:" + CPU + " RAM:" + RAM + " HDD:" + HDD;
+        return "System block: " + " CPU:" + cpu + " RAM:" + ram + " HDD:" + hdd;
     }
 }
