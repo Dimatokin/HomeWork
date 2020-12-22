@@ -1,5 +1,7 @@
 package lesson6;
 
+import java.util.Random;
+
 public class Block {
     private String cpu, ram, hdd;
      int cycleOfWork = 4;
@@ -12,8 +14,8 @@ public class Block {
     }
 
     public void turnOn(int random1) {
-        int error = (int) (Math.random() * 2);
-        int turnon = (int) (Math.random() * 2);
+        int error = new Random().nextInt(2);
+        int turnon = new Random().nextInt(2);
         while (countBurned == 0 && cycleOfWork > 0) {
             if (error != random1) {
                 System.out.println("Error computer burned.");
@@ -32,8 +34,8 @@ public class Block {
     }
 
     public void turnoff(int random1) {
-        int error = (int) (Math.random() * 2);
-        int turnoff = (int) (Math.random() * 2);
+        int error = new Random().nextInt(2);
+        int turnoff = new Random().nextInt(2);
         while (countBurned == 0 && cycleOfWork > 0) {
             if (error != random1) {
                 System.out.println("Error, computer burned.");
